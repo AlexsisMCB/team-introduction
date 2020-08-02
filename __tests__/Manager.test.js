@@ -1,12 +1,7 @@
 const Manager = require('../lib/Manager.js');
 
-<<<<<<< HEAD
 test('creates Manager object with properties', () => {
     const manager = new Manager('Alexsis', '1', 'name@email.com', '123-4567');
-=======
-test('creates Employee object with properties', () => {
-    const manager = new Manager('Alexsis', 1, 'name@email.com', '123-4567');
->>>>>>> feature/manager-object
 
     expect(manager.name).toEqual(expect.any(String));
     expect(manager.id).toEqual(expect.any(Number));
