@@ -1,0 +1,33 @@
+{
+  "name": "team-introduction",
+  "version": "1.0.0",
+  "description": "software team generator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^26.2.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexsisMCB/team-introduction.git"
+  },
+  "keywords": [
+    "generator",
+    "software",
+    "team",
+    "work",
+    "group"
+  ],
+  "author": "Alexsis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexsisMCB/team-introduction/issues"
+  },
+  "homepage": "https://github.com/AlexsisMCB/team-introduction#readme"
+}
