@@ -1,6 +1,6 @@
 const Intern = require('../lib/Intern.js');
 
-test('creates Intern object with properties', () => {
+test('creates intern object with properties', () => {
     const intern = new Intern('Jordyn', 3, 'name@email.com', 'University');
 
     expect(intern.name).toEqual(expect.any(String));;
@@ -32,7 +32,7 @@ test("get team member's email address", () => {
     console.log(intern.getEmail());
 });
 
-test('get school info', () => {
+test("get school info", () => {
     const intern = new Intern('Jordyn', 3, 'name@email.com', 'University');
 
     expect(intern.getSchool()).toEqual(expect.stringContaining(intern.school.toString()));
