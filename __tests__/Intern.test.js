@@ -38,3 +38,10 @@ test("get school info", () => {
     expect(intern.getSchool()).toEqual(expect.stringContaining(intern.school.toString()));
     console.log(intern.getSchool());
 });
+
+test('get team role', () => {
+    const intern = new Intern('Jordyn', 3, 'name@email.com', 'University');
+
+    expect(intern.getRole()).toEqual(expect.any(String));
+    console.log(intern.getRole());
+});

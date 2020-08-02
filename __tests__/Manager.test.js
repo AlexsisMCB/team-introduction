@@ -32,3 +32,10 @@ test("get team member's email address", () => {
     console.log(manager.getEmail());
 });
 
+test('get team role', () => {
+    const manager = new Manager('Alexsis', 1, 'name@email.com', '123-4567');
+
+    expect(manager.getRole()).toEqual(expect.any(String));
+    console.log(manager.getRole());
+});
+
