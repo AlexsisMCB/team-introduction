@@ -2,9 +2,12 @@ const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
-const Intern = require ('./lib/Intern');
+const Intern = require('./lib/Intern');
+const generateHtmlPage = require('./src/helper-template');
+const fs = require("fs");
 
 const startApp = function() {
+
     return inquirer
         .prompt([
             {
@@ -30,12 +33,15 @@ const startApp = function() {
         ])
         .then (({ name, id, email, officeNumber }) => {
             this.manager = new Manager(name, id, email, officeNumber);
-            console.log(this.manager);
+            this.manager.role = this.manager.getRole();
+        
             employeeOptions();
+            return manager;
         });
 };
 
 const employeeOptions = function() {
+
     return inquirer
         .prompt([
             {
@@ -57,12 +63,20 @@ const employeeOptions = function() {
                 createEngineer();
             } else if (roles === "Intern") {
                 createIntern();
+            } else {
+                console.log("Page finished!");
             }
+        })
+        .then(data => {
+            return generateHtmlPage(data);
+        })
+        .then(htmlFile => {
+            return writeToFile(htmlFile);
         });
-            
 };
 
 const createEngineer = function() {
+
     return inquirer
     .prompt([
         {
@@ -88,10 +102,10 @@ const createEngineer = function() {
     ])
     .then (({ name, id, email, github}) => {
         this.engineer = new Engineer(name, id, email, github);
-        this.engineer.getGitHub();
-            console.log(this.engineer);
-            console.log(this.engineer.getGitHub());
-            employeeOptions();
+        this.engineer.role = this.engineer.getRole();
+
+        employeeOptions();
+        return engineer;
     })
 };
 
@@ -121,11 +135,25 @@ const createIntern = function() {
     ])
     .then (({ name, id, email, school}) => {
         this.intern = new Intern(name, id, email, school);
-        this.intern.getSchool();
-            console.log(this.intern);
-            console.log(this.intern.getSchool());
-            employeeOptions();
-    })
+        this.intern.role = this.intern.getRole();
+    
+        employeeOptions();
+        return intern;
+    });
 };
 
+function writeToFile(data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile("./dist/team-member.html", data, err => {
+            if (err) {
+                reject(err);
+                return;
+            } 
+            resolve ("Success");
+        })
+    })
+}
+
 startApp();
+    
+    
